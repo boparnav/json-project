@@ -1,0 +1,68 @@
+<html>
+<head><title>jason project</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+   
+ var users=[];
+    axios.get("https://jsonplaceholder.typicode.com/users")
+    .then(function(response){
+	
+	users = response.data;
+	let showData="";
+	for(var i=0; i < users.length ; i++)
+		
+	
+	{ 
+	showData=showData + `<div class="card" style="width:200px">
+						<img class="card-img-top" src="iamges/IT.PNG" alt="Card image" style="width:100%">
+									<div class="card-body">
+										<h4 class="card-title">${users[i].name}</h4>
+										<h3 class="card-title">${users[i].username}</h3>
+										<h4 class="card-title">${users[i].email}</h4>
+											<a href="#" class="btn btn-primary" onclick="showData()">See Profile</a>
+									</div>
+								</div>`
+						}
+						//console.log(showData);
+	document.getElementById("data").innerHTML= showData;
+});
+
+</script>
+<style>
+#one  {
+       display:none;
+	   }
+.card{
+      background-color:green;
+	 }
+
+
+
+</style>
+</head>
+
+
+<body>
+<div class="container">
+   <div>
+
+		<div class="row" id="data">
+			<div class="col-lg-8 col-lg-offset-4">
+	<h2>Users </h2>
+	<p>Top-ten  users are listed here</p>
+		
+			</div>
+		</div>
+ </div>
+  
+ </div>
+
+
+</body>
+
+
+</html>
